@@ -1,0 +1,19 @@
+/* Estilos para las pestañas */
+.tab-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-btn.active {
+    background-color: #ccc;
+}
+
+/* Estilos para el contenido de las pestañas */
+.tab-content {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+}
