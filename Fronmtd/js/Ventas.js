@@ -20,17 +20,19 @@ function loadClientes() {
   });
 }
 
-function save() {
-  try {
+  function save() {
+    try{
     var personData = {
       total: $("#total").val(),
-      fecha_venta: $("#fecha_venta").val(),
+      fecha_venta: $("#fecha_venta").val() || new Date().toISOString().slice(0, 10), // Asignar la fecha actual si fecha_venta está vacía
       cliente: {
-        id: parseInt($("#cliente_id").val()), // Corregir el ID del select
+        id: parseInt($("#cliente_id").val()),
       },
-
-      state: $("#state").val() === "1" ? true : false,
+      state: $("#estado").val() === "1" ? true : false,
     };
+  
+      // Resto del código sigue igual...
+  
     $.ajax({
       url: "http://localhost:9000/Prueba/v1/api/Ventas",
       method: "POST",
@@ -104,7 +106,7 @@ function loadData() {
                                 })">
                                     <img src="../asset/icon/trash3.svg">
                                 </button>
-                                <button type="button" class="btn btn-secondary" onclick="deleteById(${
+                                <button type="button" class="btn btn-secondary" onclick="generarFactura(${
                                   item.id
                                 })">
                                 <img src="../asset/icon/3844432-magnifier-search-zoom_110300.svg">
@@ -286,65 +288,28 @@ function findById(id) {
     },
   });
 }
-function filtrarVentas() {
-  // Obtener el valor de la fecha de inicio
-  var fechaInicio = $("#fecha_venta").val();
 
-  // Realizar la solicitud AJAX para filtrar las ventas por fecha de inicio
-  $.ajax({
-    url: "http://localhost:9000/Prueba/v1/api/Ventas",
-    method: "GET",
-    dataType: "json",
-    data: {
-      fecha_venta: fechaInicio,
-    },
-    success: function (response) {
-      var html = "";
-      var data = response.data;
+function generarFactura() {
+  // Recuperar datos para la factura
+  var subtotal = document.getElementById('subtotal').value;
+  var descuento = document.getElementById('descuento').value;
+  var iva = document.getElementById('iva').value;
+  var efectivoRecibido = document.getElementById('efectivoRecibido').value;
+  var cambio = document.getElementById('cambio').value;
 
-      // Si no hay datos filtrados, mostrar un mensaje
-      if (data.length === 0) {
-        html =
-          '<tr><td colspan="5" class="text-center">No se encontraron ventas para la fecha seleccionada</td></tr>';
-      } else {
-        // Construir el HTML solo para el dato filtrado
-        var item = data[0]; // Tomar el primer elemento del array de datos filtrados
-        html += `<tr>
-                    <td>${item.id}</td>
-                    <td>${item.cliente.nombre}</td>
-                    <td>${item.total}</td>
-                    <td>${item.fecha_venta}</td>
-                    <td>${item.state == true ? "Activo" : "Inactivo"}</td>
-                  </tr>`;
-      }
+  // Crear el contenido de la factura
+  var facturaHTML = `
+    <div class="factura">
+      <div class="item">Subtotal general: ${subtotal}</div>
+      <div class="item">Descuento: ${descuento}</div>
+      <div class="item">Valor de IVA total: ${iva}</div>
+      <div class="item">Efectivo recibido: ${efectivoRecibido}</div>
+      <div class="item">Cambio: ${cambio}</div>
+    </div>
+  `;
 
-      // Limpiar contenido de la tabla antes de mostrar los datos filtrados
-      $("#resultData").html("");
-
-      // Insertar el HTML generado en la tabla
-      $("#resultData").html(html);
-    },
-    error: function (error) {
-      console.error("Error en la solicitud:", error);
-    },
-  });
+  // Mostrar la factura en el contenedor
+  var facturaContainer = document.getElementById('facturaContainer');
+  facturaContainer.innerHTML = facturaHTML;
+  facturaContainer.style.display = 'block';
 }
-
-
-
-var personData = {
-  Cantidad: $("#Cantidad").val(),
-  precio: $("#precio").val(),
-  precio: $("#precio").val(),
-  descuento: $("#descuento").val(),
-  sub_total: $("#sub_total").val(),
-  fecha_venta: $("#fecha_venta").val(),
-  ventas: {
-    id: parseInt($("#ventas_id").val()), // Corregir el ID del select
-  },
-  producto: {
-      id: parseInt($("#producto_id").val()), // Corregir el ID del select
-    },
-
-  state: $("#estado").val() === "1" ? true : false,
-};

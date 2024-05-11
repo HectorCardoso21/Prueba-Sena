@@ -27,7 +27,7 @@ function save() {
       nombre: $("#nombre").val(),
       apellido: $("#apellido").val(),
       address: $("#address").val(),
-      document: $("#Document").val(),
+      document: $("#document").val(),
       ubication: $("#ubication").val(),
       telefono: $("#telefono").val(),
       typeDocument: $("#typeDocument").val(),
@@ -249,3 +249,29 @@ function update() {
       },
     });
   }
+
+
+  $(document).ready(function() {
+    $('#filterName').keyup(function() {
+        var filterValue = $(this).val().toLowerCase().trim();
+        
+        $.ajax({
+            url: 'http://localhost:9000/Prueba/v1/api/cliente/listFiltros',
+            type: 'GET',
+            dataType: 'json',
+            data: { nombreCliente: filterValue },
+            success: function(data) {
+                var resultData = $('#resultData');
+                resultData.empty(); // Limpiar tabla antes de agregar nuevos datos
+                
+                $.each(data, function(data , index) {
+                  resultData.append('<tr><td>' + data.nombre + '</td><td>' + data.apellido + '</td><td>');
+              });
+              
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al obtener datos: ' + error);
+            }
+        });
+    });
+});

@@ -1,43 +1,128 @@
-<!DOCTYPE html>
-<html lang="en">
 
+
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../Js/navbar.js"></script>
+    <script src="../Js/menu.js"></script>
+    <link href="../src/estilos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+    <!-- ajax jquery -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Inbox</title>
+    <!-- Librerias -->
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+    <!-- ajax jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Dashboard</title>
 </head>
-
+<script>
+    var sidebarContent = navbarConten();
+    document.write(sidebarContent);
+</script>
 <body>
-    <h1>Welcome !</h1>
+    <h1 class="flex items-center text-5xl font-extrabold dark:text-white">Welcomw <span
+        class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">SHOPPING</span>
+</h1>
+    <div class="container mx-auto flex flex-wrap justify-around mb-8">
+        <div class="max-w-md bg-teal-8800 text-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h1 class="text-2xl text-black font-semibold">Cantidad : <span id="cantidadRegistros"></span>
+                <p class="text-lg text-black">Clientes</p>
+            </div>
+            <div class="p-4">
+                <a href="../View/Cliente.html" class="text-white underline text-black">Más información</a>
+            </div>
+        </div>
+    
+        <div class="max-w-md bg-green-500 text-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h1 class="text-2xl font-semibold text-black">Cantidad : <span id="cantidadVentas"></span>
+                <p class="text-lg text-black">Ventas</p>
+            </div>
+            <div class="p-4">
+                <a href="../View/Ventas.html" class="text-white underline text-black">Más información</a>
+            </div>
+        </div>
+    
+        <div class="max-w-md bg-red-500 text-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h1 class="text-2xl font-semibold text-black">Cantidad : <span id="cantidadProductos"></span>
+                <p class="text-lg text-black">Productos</p>
+            </div>
+            <div class="p-4">
+                <a href="../View/Productos.html" class="text-white underline text-black">Más información</a>
+            </div>
+        </div>
+    </div>
 
-    <!-- Aquí puedes agregar cualquier contenido que desees antes de la tabla -->
+    <div class="container mx-auto mt-4">
+        <h2 class="text-xl font-semibold mb-4">Bajo inventario</h2>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">#</th>
+                        <th scope="col" class="px-6 py-3">Producto</th>
+                        <th scope="col" class="px-6 py-3">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="resultData">
+                    <tr>
+                        <td class="px-6 py-4">1</td>
+                        <td class="px-6 py-4">Zapatos Nike</td>
+                        <td class="px-6 py-4">5</td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4">2</td>
+                        <td class="px-6 py-4">Tenis Bata</td>
+                        <td class="px-6 py-4">3</td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4">3</td>
+                        <td class="px-6 py-4">Tacones</td>
+                        <td class="px-6 py-4">0</td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4">4</td>
+                        <td class="px-6 py-4">Chanclas mujer</td>
+                        <td class="px-6 py-4">1</td>
+                    </tr>
+                    <tr>
+                        <td class="px-6 py-4">5</td>
+                        <td class="px-6 py-4">Chanclas hombre</td>
+                        <td class="px-6 py-4">3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <!-- La tabla se coloca aquí más abajo -->
-    <table class="w-full text-sm text-left text-gray-400">
-        <thead class="text-xs uppercase bg-gray-700 text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">ID</th>
-                <th scope="col" class="px-6 py-3">Estado</th>
-                <th scope="col" class="px-6 py-3">Ventass</th>
-                <th scope="col" class="px-6 py-3">Producto</th>
-                <th scope="col" class="px-6 py-3">Cantidad</th>
-                <th scope="col" class="px-6 py-3">Descuento</th>
-                <th scope="col" class="px-6 py-3">Precio</th>
-                <th scope="col" class="px-6 py-3">Subtotal</th>
-                <th scope="col" class="px-6 py-3">Actions</th>
-            </tr>
-        </thead>
-        <tbody id="resultDataF">
-            <!-- Filas de datos se insertarán aquí -->
-        </tbody>
-    </table>
-
-    <!-- Aquí puedes agregar cualquier contenido que desees después de la tabla -->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/nose.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadDataf();
+            loadDataV();
+            loadDatap();
+            loadData();
+        });
+    </script>
 </body>
-
 </html>
+
+
+
+
+
+
+
+

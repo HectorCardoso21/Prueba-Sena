@@ -29,7 +29,7 @@ function generateSidebarContent() {
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="inbox.html">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -41,7 +41,7 @@ function generateSidebarContent() {
         
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../View/inbox.html">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Historial</span></a>
                 </li>
@@ -85,21 +85,21 @@ function generateSidebarContent() {
         
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="productosTienda.html">
+                    <a class="nav-link" href="../View/Cliente.html">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Productos</span></a>
                 </li>
         
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="clientesTienda.html">
+                    <a class="nav-link" href="../View/Productos.html">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Clientes</span></a>
                 </li>
         
                 <!-- Nav Item - Tables -->
                 <li class="nav-item">
-                    <a class="nav-link" href="facturaTienda.html">
+                    <a class="nav-link" href="../View/Ventas.html">
                         <i class="fas fa-fw fa-table"></i>
                         <span>Factura</span></a>
                 </li>
@@ -143,14 +143,6 @@ function generateSidebarContent() {
             
         </div>
     </body>
-    
-   
-
-    
-    
-    
-    
-    
     
     `;
 }

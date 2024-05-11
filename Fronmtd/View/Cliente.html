@@ -1,167 +1,185 @@
-<!DOCTYPE html>
-<html lang="en" class="dark">
+    <!DOCTYPE html>
+    <html lang="en" class="dark">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>City</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="../src/output.css" rel="stylesheet">
-    <link href="../src/estilos.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>City</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+        <!-- ajax jquery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      
+      
+          <!-- Librerias -->
+          <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/litera/bootstrap.min.css" rel="stylesheet">
+      
+          <!-- ajax jquery -->
+          <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+         
+        <link href="../src/estilos.css" rel="stylesheet">
+        <script src="../Js/navbar.js"></script>
 
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-
-<body class="dark:bg-slate-900">
-    <div class="container">
-
-
-        <h1 class="flex items-center text-5xl font-extrabold dark:text-white">Cliente<span
-                class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">SHOPPING</span>
-        </h1>
-
-    </div>
-    </div>
-
-    </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <script>
+        var sidebarContent = navbarConten();
+        document.write(sidebarContent);
+    
+    </script>
+    <body class="dark:bg-slate-900">
+       
+        <div class="container">
 
 
-    <div class="container mx-auto">
+            <h1 class="flex items-center text-5xl font-extrabold dark:text-white">Cliente<span
+                    class="bg-blue-100 text-blue-800 text-2xl font-semibold me-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-2">SHOPPING</span>
+            </h1>
 
-        <!-- Agregar filtros -->
-        <div class="mb-4 flex items-center" style="float: right;">
-            <label for="filterName" class="mr-2">Nombre:</label>
-            <input type="text" id="filterName" class="input-field mr-4">
-
-            <label for="filterCity" class="mr-2">Ciudad:</label>
-            <input type="text" id="filterCity" class="input-field mr-4">
-
-            <label for="filterState" class="mr-2">Estado:</label>
-            <select id="filterState" class="input-field">
-                <option value="">Todos</option>
-                <option value="true">Activo</option>
-                <option value="false">Inactivo</option>
-            </select>
         </div>
-        <!-- Botón para abrir el modal -->
-        <button id="toggle-modal" style="position: sticky;;" onclick="openModal()"
-            class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-left dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-4"
-            type="button">
-            Agregar Cliente
-        </button>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-dark-100 dark:text-dark-100 ">
-                <thead class="text-xs text-dark uppercase bg-blue-600 dark:text-dark">
-                    <tr>
-
-                        <th scope="col" class="px-6 py-3">status</th>
-                        <th scope="col" class="px-6 py-3">Nombre</th>
-                        <th scope="col" class="px-6 py-3">apellido</th>
-                        <th scope="col" class="px-6 py-3">ubication</th>
-                        <th scope="col" class="px-6 py-3">Telefonio</th>
-
-                        <th scope="col" class="px-6 py-3">Document</th>
-                        <th scope="col" class="px-6 py-3">status</th>
-                        <th scope="col" class="px-6 py-3">typeDocument</th>
-                        <th scope="col" class="px-6 py-3">Actions</th>
-
-
-                    </tr>
-                </thead>
-                <tbody id="resultData">
-                    <!-- Filas de datos se insertarán aquí -->
-                </tbody>
-            </table>
         </div>
-    </div>
-    </div>
-    <!-- Modal principal -->
-    <div id="crud-modal" tabindex="-1" aria-hidden="true"
-        class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-gray-500 bg-opacity-75 hidden">
-        <div class="relative bg-white rounded-lg shadow-lg w-96">
-            <div class="p-4">
-                <div class="flex items-center justify-between">
-                    <h3 class="text-lg font-semibold text-gray-900">New Cliente</h3>
-                    <button id="close-modal" onclick="closeModal()" type="button"
-                        class="text-gray-400 hover:text-gray-700 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="mt-4">
-                    <!-- Formulario para agregar un continente -->
-                    <form>
-                        <div class="mb-4">
-                            <input type="hidden" name="id" id="id" value="">
-                        </div>
-                        <div class="mb-4">
-                            <label for="code" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
-                            <input type="text" name="nombre" id="nombre" class="input-field" placeholder="nombre">
-                        </div>
-                        <div class="mb-4">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">apellido</label>
-                            <input type="text" name="apellido" id="apellido" class="input-field" placeholder="apellido">
-                        </div>
-                        <div class="mb-4">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900">address</label>
-                            <input type="text" name="address" id="address" class="input-field" placeholder="address">
-                        </div>
-                        <div class="mb-4">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900">documents</label>
-                            <input type="text" name="document" id="document" class="input-field" placeholder="document">
-                        </div>
-                        <div class="mb-4">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900">ubication</label>
-                            <input type="text" name="ubication" id="ubication" class="input-field"
-                                placeholder="ubication">
-                        </div>
-                        <div class="mb-4">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900">Telefono</label>
-                            <input type="text" name="telefono" id="telefono" class="input-field" placeholder="Telefono">
-                        </div>
-                        <div>
-                            <label for="typeDocument"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">typeDocument</label>
-                            <select id="typeDocument" name="typeDocument" class="input-field">
-                                <option selected>Selct One</option>
-                                <option value="US">CC</option>
-                                <option value="CA">TI</option>
-                                <option value="FR">RC</option>
-                                <!-- Options will be dynamically added here -->
-                            </select>
-                        </div>
-                        <div>
-                            <label for="state"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                            <select id="state" nam class="input-field">
-                                <option value="1">asset</option>
-                                <option value="0">Offlid</option>
-                            </select>
-                        </div>
-                        <button
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mt-4"
-                            type="button" name="btnAgregar" onclick="save()">Save</button>
-                    </form>
 
+        </div>
+
+
+        <div class="container mx-auto">
+
+            <!-- Agregar filtros -->
+            <div class="mb-4 flex items-center" style="float: right;">
+                <label for="filterName" class="mr-2">Nombre:</label>
+                <input type="text" id="filterName" class="input-field mr-4">
+
+                <label for="filterCity" class="mr-2">Ciudad:</label>
+                <input type="text" id="filterCity" class="input-field mr-4">
+
+                <label for="filterState" class="mr-2">Estado:</label>
+                <select id="filterState" class="input-field">
+                    <option value="">Todos</option>
+                    <option value="true">Activo</option>
+                    <option value="false">Inactivo</option>
+                </select>
+            </div>
+            <!-- Botón para abrir el modal -->
+            <button id="toggle-modal" style="position: sticky;;" onclick="openModal()"
+                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-left dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-4"
+                type="button">
+                Agregar Cliente
+            </button>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-dark-100 dark:text-dark-100 ">
+                    <thead class="text-xs text-dark uppercase bg-blue-600 dark:text-dark">
+                        <tr>
+
+                            <th scope="col" class="px-6 py-3">status</th>
+                            <th scope="col" class="px-6 py-3">Nombre</th>
+                            <th scope="col" class="px-6 py-3">apellido</th>
+                            <th scope="col" class="px-6 py-3">ubication</th>
+                            <th scope="col" class="px-6 py-3">Telefonio</th>
+
+                            <th scope="col" class="px-6 py-3">Document</th>
+                            <th scope="col" class="px-6 py-3">status</th>
+                            <th scope="col" class="px-6 py-3">typeDocument</th>
+                            <th scope="col" class="px-6 py-3">Actions</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="resultData">
+                        <!-- Filas de datos se insertarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+        <!-- Modal principal -->
+        <div id="crud-modal" tabindex="-1" aria-hidden="true"
+            class="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-gray-500 bg-opacity-75 hidden">
+            <div class="relative bg-white rounded-lg shadow-lg w-96">
+                <div class="p-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-semibold text-gray-900">New Cliente</h3>
+                        <button id="close-modal" onclick="closeModal()" type="button"
+                            class="text-gray-400 hover:text-gray-700 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <!-- Formulario para agregar un continente -->
+                        <form>
+                            <div class="mb-4">
+                                <input type="hidden" name="id" id="id" value="">
+                            </div>
+                            <div class="mb-4">
+                                <label for="code" class="block mb-2 text-sm font-medium text-gray-900">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" class="input-field" placeholder="nombre">
+                            </div>
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">apellido</label>
+                                <input type="text" name="apellido" id="apellido" class="input-field" placeholder="apellido">
+                            </div>
+                            <div class="mb-4">
+                                <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900">address</label>
+                                <input type="text" name="address" id="address" class="input-field" placeholder="address">
+                            </div>
+                            <div class="mb-4">
+                                <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900">documents</label>
+                                <input type="text" name="document" id="document" class="input-field" placeholder="document">
+                            </div>
+                            <div class="mb-4">
+                                <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900">ubication</label>
+                                <input type="text" name="ubication" id="ubication" class="input-field"
+                                    placeholder="ubication">
+                            </div>
+                            <div class="mb-4">
+                                <label for="description"
+                                    class="block mb-2 text-sm font-medium text-gray-900">Telefono</label>
+                                <input type="text" name="telefono" id="telefono" class="input-field" placeholder="Telefono">
+                            </div>
+                            <div>
+                                <label for="typeDocument"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">typeDocument</label>
+                                <select id="typeDocument" name="typeDocument" class="input-field">
+                                    <option selected>Selct One</option>
+                                    <option value="US">CC</option>
+                                    <option value="CA">TI</option>
+                                    <option value="FR">RC</option>
+                                    <!-- Options will be dynamically added here -->
+                                </select>
+                            </div>
+                            <div>
+                                <label for="state"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                                <select id="state" nam class="input-field">
+                                    <option value="1">asset</option>
+                                    <option value="0">Offlid</option>
+                                </select>
+                            </div>
+                            <button
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 mt-4"
+                                type="button" name="btnAgregar" onclick="save()">Save</button>
+                        </form>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="../js/Cliente.js"></script>
-    <script src="../js/Modal.js"></script>
-    <script>
-        loadData();
-    </script>
-</body>
+        <script src="../js/Cliente.js"></script>
+        <script src="../js/Modal.js"></script>
+        <script>
+            loadData();
+        </script>
+    </body>
 
-</html>
+    </html>
