@@ -5,14 +5,6 @@ $(document).ready(function () {
     loadData();
 });
 
-function openModal() {
-    document.getElementById('crud-modal').classList.remove('hidden');
-}
-
-function closeModal() {
-    document.getElementById('crud-modal').classList.add('hidden');
-}
-
 
 
 
@@ -40,4 +32,11 @@ function openModal() {
 function closeModal() {
     document.getElementById('crud-modal').classList.add('hidden');
 }
+
+
+
+
+
+
+
 

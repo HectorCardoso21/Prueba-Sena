@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="dark:bg-slate-900">
+    <div class="container mx-auto py-8">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold text-dark">Ventas</h1>
+            <div class="flex items-center">
+                <!-- Agregar opciones de clientes -->
+                </select>
+            </div>
+        </div>
+        <div class="mb-4">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+                <li class="mr-2">
+                    <a href="#"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 active"
+                        onclick="mostrarTabla()">Ventas</a>
+                </li>
+                <li class="mr-2">
+                    <a href="#"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        onclick="mostrarFormulario()">Agregar Venta</a>
+                </li>
+                <li class="mr-2">
+                    <a href="#"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        onclick="mostrarFactura()">Detalle Factura</a>
+                </li>
+                <li class="mr-2">
+                    <a href="#"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        onclick="mostrarFactura()">Factura</a>
+                </li>
+                <li class="mr-2">
+                    <a href="#"
+                        class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                        onclick="mostasrFormFacuta()">Form Factura</a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+        <!-- Factura section with only the table -->
+        <div id="Factura" class="relative overflow-x-auto shadow-md sm:rounded-lg hidden">
+        <!-- Factura section with only the table -->
+
+
+
+
+            <table class="w-full text-sm text-left text-gray-400">
+                <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">ID</th>
+                        <th scope="col" class="px-6 py-3">Estado</th>
+                        <th scope="col" class="px-6 py-3">Ventass</th>
+                        <th scope="col" class="px-6 py-3">Producto</th>
+                        <th scope="col" class="px-6 py-3">Cantidad</th>
+                        <th scope="col" class="px-6 py-3">Descuento</th>
+                        <th scope="col" class="px-6 py-3">Precio</th>
+                        <th scope="col" class="px-6 py-3">Subtotal</th>
+                        <th scope="col" class="px-6 py-3">Actions</th>
+
+
+                    </tr>
+                </thead>
+                <tbody id="resultDataF">
+                    <!-- Filas de datos se insertarán aquí -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Your existing table and form sections -->
+
+    </div>
+
+
+
+
+<!-- Factura section with only the table -->
+<div id="Formrs" class="relative overflow-x-auto shadow-md sm:rounded-lg hidden">
+    <!-- Factura section with only the table -->
+
+
+
+
+    <form class="max-w-sm mx-auto">
+        <label>Ventas</label>
+        <label for="Ventas" class="block mb-2 text-sm font-medium text-white">Ventas</label>
+        <select id="ventas_id" name="ventas_id"
+            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="">Seleccione un Venta</option>
+            <!-- Agregar opciones de clientes -->
+        </select>
+        <label>Producto</label>
+
+        <label for="cliente" class="block mb-2 text-sm font-medium text-white">Producto</label>
+        <select id="Productos" name="Productos"
+            class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            <option value="">Seleccione un Producto/option>
+            <!-- Agregar opciones de clientes -->
+        </select>
+        <div class="flex items-start mb-5">
+            <div class="mb-4">
+                <label for="Cantidad" class="block mb-2 text-sm font-medium text-white">Cantidad</label>
+                <input type="number" id="Cantidad"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Total de la venta">
+            </div>
+            <div class="mb-4">
+                <label for="precio" class="block mb-2 text-sm font-medium text-white">precio</label>
+                <input type="number" id="precio"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Total de la venta">
+            </div>
+            <div class="mb-4">
+                <label for="Descuento" class="block mb-2 text-sm font-medium text-white">Descuento</label>
+                <input type="number" id="descueto"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Total de la venta">
+            </div>
+            <div class="mb-4">
+                <label for="Sub_Total" class="block mb-2 text-sm font-medium text-white">Sub_Total</label>
+                <input type="number" id="sub_total"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Total de la venta">
+            </div>
+            <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+            <select id="state" name="estado" class="input-field">
+                <option value="1">asset</option>
+                <option value="0">Offlid</option>
+            </select>
+        </div>
+        <button type="button" name="btnAgregar"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2"
+        onclick="saves()">Agregar Factura</button>
+      </form>
+      
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="tabla" class="relative overflow-x-auto shadow-md sm:rounded-lg hidden">
+
+        <!-- Agregar filtros -->
+        <h3>Filtrar Ventas</h3>
+        <DIr></DIr>
+        <label for="cliente">Cliente:</label>
+        <select id="">
+            <!-- Opciones de clientes -->
+        </select>
+        <label for="fecha_venta">Fecha de Inicio:</label>
+        <input type="date" id="fecha_venta">
+        <button onclick="filtrarVentas()">Filtrar</button>
+
+
+
+        <table class="w-full text-sm text-left text-gray-400">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Id</th>
+                    <th scope="col" class="px-6 py-3">Cliente</th>
+                    <th scope="col" class="px-6 py-3">Total</th>
+                    <th scope="col" class="px-6 py-3">Fecha</th>
+                    <th scope="col" class="px-6 py-3">Status</th>
+                    <th scope="col" class="px-6 py-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="resultData">
+                <!-- Filas de datos se insertarán aquí -->
+            </tbody>
+        </table>
+    </div>
+    <div id="formulario" class="hidden">
+        <!-- Contenido del formulario -->
+        <form>
+            <div class="mb-4">
+                <input type="hidden" name="id" id="id" value="">
+            </div>
+            <div class="mb-4">
+                <label for="cliente" class="block mb-2 text-sm font-medium text-white">Cliente</label>
+                <select id="cliente_id" name="cliente_id"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="">Seleccione un cliente</option>
+                    <!-- Agregar opciones de clientes -->
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="total" class="block mb-2 text-sm font-medium text-white">Total</label>
+                <input type="text" id="total"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    placeholder="Total de la venta">
+            </div>
+            <div class="mb-4">
+                <label for="fecha" class="block mb-2 text-sm font-medium text-white">Fecha</label>
+                <input type="date" id="fecha_venta" name="fecha_venta"
+                    class="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+            </div>
+            <div>
+                <label for="state" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <select id="state" name="estado" class="input-field">
+                    <option value="1">asset</option>
+                    <option value="0">Offlid</option>
+                </select>
+            </div>
+            <button type="button" name="btnAgregar"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2"
+                onclick="save()">Agregar Venta</button>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="../js/Ventas.js"></script>
+    <script src="../js/FacturaDeatalle.js"></script>
+
+    <script src="../js/Modal.js"></script>
+    <script>
+        $(document).ready(function () {
+            loadData();
+        });
+        loadDataf();
+
+        loadClientes();
+        loadproductos() ;
+        loasVentas();
+    </script>
+
+</body>
+
+</html>

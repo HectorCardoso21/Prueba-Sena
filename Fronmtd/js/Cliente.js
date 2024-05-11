@@ -27,7 +27,7 @@ function save() {
       nombre: $("#nombre").val(),
       apellido: $("#apellido").val(),
       address: $("#address").val(),
-      document: $("#document").val(),
+      document: $("#Document").val(),
       ubication: $("#ubication").val(),
       telefono: $("#telefono").val(),
       typeDocument: $("#typeDocument").val(),
@@ -83,9 +83,9 @@ function loadData() {
                             <td>${item.nombre}</td>
                             <td>${item.apellido}</td>
                             <td>${item.address}</td>
-                            <td>${item.Document}</td>
+                            <td>${item.document}</td>
                             <td>${item.ubication}</td>
-                            <td>${item.Telefono}</td>
+                            <td>${item.telefono}</td>
                             <td>${item.typeDocument}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="findById(${item.id})">
@@ -153,7 +153,7 @@ function update() {
           nombre: $("#nombre").val(),
           apellido: $("#apellido").val(),
           address: $("#address").val(),
-          document: $("#document").val(),
+          document: $("#Document").val(),
           ubication: $("#ubication").val(),
           telefono: $("#telefono").val(),
           typeDocument: $("#typeDocument").val(),
@@ -229,7 +229,7 @@ function update() {
         $("#nombre").val(data.nombre);
         $("#apellido").val(data.apellido);
         $("#address").val(data.address);
-        $("#document").val(data.document);
+        $("#Document").val(data.document);
         $("#ubication").val(data.ubication);
         $("#telefono").val(data.telefono);
         $("#typeDocument").val(data.typeDocument);

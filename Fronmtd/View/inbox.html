@@ -1,16 +1,43 @@
-<!-- inbox.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Inbox</title>
 </head>
 
 <body>
     <h1>Welcome !</h1>
-    
+
+    <!-- Aquí puedes agregar cualquier contenido que desees antes de la tabla -->
+
+    <!-- La tabla se coloca aquí más abajo -->
+    <table class="w-full text-sm text-left text-gray-400">
+        <thead class="text-xs uppercase bg-gray-700 text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">ID</th>
+                <th scope="col" class="px-6 py-3">Estado</th>
+                <th scope="col" class="px-6 py-3">Ventass</th>
+                <th scope="col" class="px-6 py-3">Producto</th>
+                <th scope="col" class="px-6 py-3">Cantidad</th>
+                <th scope="col" class="px-6 py-3">Descuento</th>
+                <th scope="col" class="px-6 py-3">Precio</th>
+                <th scope="col" class="px-6 py-3">Subtotal</th>
+                <th scope="col" class="px-6 py-3">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultDataF">
+            <!-- Filas de datos se insertarán aquí -->
+        </tbody>
+    </table>
+
+    <!-- Aquí puedes agregar cualquier contenido que desees después de la tabla -->
+
 </body>
 
 </html>
