@@ -1,5 +1,6 @@
 package com.sena.carritocompra.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,26 @@ public class ClienteService  extends ABaseService<Cliente> implements IClienteSe
 		return repository.getTypeDocument(type);
 	}
 
+
+	@Override
+	public List<IClienteDto> getLits() {
+		return repository.getLits();
+	}
+
+
+	@Override
+	public List<IClienteDto> getFiltros() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public List<IClienteDto> getFiltrosClienteDtos() {
+		// TODO Auto-generated method stub
+		return repository.getFiltrosClienteDtos();
+	}
 }
+	
+	
+

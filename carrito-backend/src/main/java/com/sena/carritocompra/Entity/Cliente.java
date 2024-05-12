@@ -19,7 +19,7 @@ public class Cliente  extends ABaseEntity{
     @Column(name = "address", length = 100, nullable = false)
     private String address;
     
-    @Column(name = "	", length = 50, nullable = false)
+    @Column(name = "typeDocument", length = 50, nullable = false)
     private String typeDocument;
     
     @Column(name = "document", length = 10, nullable = false, unique=true)

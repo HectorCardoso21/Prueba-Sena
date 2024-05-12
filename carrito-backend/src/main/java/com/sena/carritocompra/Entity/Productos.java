@@ -20,10 +20,10 @@ public class Productos  extends ABaseEntity{
     @Column(name = "precio", length = 50, nullable = false)
     private Double precio;
     
-    @Column(name = "PorcentjeIva", length = 10, nullable = false, unique=true)
+    @Column(name = "PorcentjeIva", length = 10, nullable = false )
     private int PorcentjeIva;
     
-    @Column(name = "PorcentajeDes", length = 10, nullable = false, unique=true)
+    @Column(name = "PorcentajeDes", length = 10, nullable = false)
     private int PorcentajeDes;
 
 	public String getNombre() {

@@ -1,5 +1,6 @@
 package com.sena.carritocompra.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sena.carritocompra.Entity.DPR_VENRTAS;
@@ -15,7 +16,7 @@ public class DPR_VentasServiceS extends ABaseService<DPR_VENRTAS> implements DPR
 		// TODO Auto-generated method stub
 		return repository;
 	}
-	
+	@Autowired
 	public DRP_VentasRepositoy repository;
 
 }

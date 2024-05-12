@@ -24,6 +24,26 @@ public interface IClienteRepository extends IBaseRepository<Cliente, Long> {
 			+ "where deleted_at is null;\r\n"
 			+ "", nativeQuery = true)
 	List<IClienteDto> getTypeDocument(String type);
+	
+	
+	
+	
+	@Query(value = "		SELECT COUNT(*)  AS Cantidad FROM cliente \r\n"
+			+ "        where deleted_at is null\r\n"
+			+ "        \r\n"
+			+ "", nativeQuery = true)
+	List<IClienteDto> getLits();
+
+	
+	
+	
+	 @Query(value = "SELECT nombre, apellido, telefono FROM prueba.cliente WHERE nombre = nombre;\r\n"
+	 		+ "", nativeQuery = true)
+	    List<IClienteDto> getFiltrosClienteDtos ();
+	
+	
+	
+
 
 }
 
